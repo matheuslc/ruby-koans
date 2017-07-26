@@ -14,10 +14,17 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
+  validator(a, b, c)
+
   return :equilateral if a == b && b == c
   return :isosceles if (a == b && b != c) || (b == c && b != a) || (a == c && a != b) 
 
   :scalene
+end
+
+def validator(a, b, c)
+  raise TriangleError if (a <= 0 || b <= 0 || c <= 0)
+  raise TriangleError if (a + b <= c) || (b + c <= a) || (a + c <= b)
 end
 
 # Error class used in part 2.  No need to change this code.
